@@ -1,11 +1,15 @@
 package com.expense.expense_tracker.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 import java.time.LocalDate;
 
 public record ExpenseResponseDTO(
-        @lombok.NonNull String title,
-        @lombok.NonNull Double amount,
-        @lombok.NonNull String category,
-        @lombok.NonNull LocalDate date
-) {
-}
+        @NotNull Long id,
+        @NotBlank String title,
+        @NotNull @Positive Double amount,
+        @NotBlank String category,
+        @NotNull LocalDate date
+) {}

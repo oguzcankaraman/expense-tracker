@@ -26,4 +26,19 @@ public class ExpenseController {
     public ExpenseResponseDTO saveExpense(@RequestBody ExpenseRequestDTO expense) {
         return expenseService.saveExpense(expense);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteExpense(@PathVariable Long id) {
+        expenseService.deleteExpense(id);
+    }
+
+    @PutMapping("/{id}")
+    public ExpenseResponseDTO updateExpense(@PathVariable Long id, @RequestBody ExpenseRequestDTO expense) {
+        return expenseService.updateExpense(id, expense);
+    }
+
+    @GetMapping("/{id}")
+    public ExpenseResponseDTO getExpenseById(@PathVariable Long id) {
+        return expenseService.getExpenseById(id);
+    }
 }
