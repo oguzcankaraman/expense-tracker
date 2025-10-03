@@ -3,6 +3,7 @@ package com.expense.expense_tracker.controller;
 import com.expense.expense_tracker.dto.ExpenseRequestDTO;
 import com.expense.expense_tracker.dto.ExpenseResponseDTO;
 import com.expense.expense_tracker.service.ExpenseService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class ExpenseController {
     }
 
     @PostMapping
-    public ExpenseResponseDTO saveExpense(@RequestBody ExpenseRequestDTO expense) {
+    public ExpenseResponseDTO saveExpense(@Valid @RequestBody ExpenseRequestDTO expense) {
         return expenseService.saveExpense(expense);
     }
 
@@ -33,7 +34,7 @@ public class ExpenseController {
     }
 
     @PutMapping("/{id}")
-    public ExpenseResponseDTO updateExpense(@PathVariable Long id, @RequestBody ExpenseRequestDTO expense) {
+    public ExpenseResponseDTO updateExpense(@PathVariable Long id, @Valid @RequestBody ExpenseRequestDTO expense) {
         return expenseService.updateExpense(id, expense);
     }
 
