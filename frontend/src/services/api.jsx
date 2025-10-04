@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE = "http://localhost:8080/api";
+const API_BASE = process.env.REACT_APP_API_URL;
 
 export const createExpense = async (expense) => {
     return await axios.post(`${API_BASE}/expenses`, expense);
