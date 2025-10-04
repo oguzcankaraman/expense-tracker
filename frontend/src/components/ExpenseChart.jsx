@@ -85,7 +85,7 @@ const ExpenseChart = ({ refreshTrigger }) => {
                         }}
                     />
                 </div>
-            </div>    
+            </div>
     );
 };
 
