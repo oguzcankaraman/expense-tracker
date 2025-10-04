@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    @Value("${allowed-origins:http://localhost:3000}")
+    @Value("${ALLOWED_ORIGINS:http://localhost:3000}")
     private String allowedOrigins;
 
     @Override
