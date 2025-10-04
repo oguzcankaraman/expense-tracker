@@ -2,23 +2,29 @@ import React, { useState } from "react";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import ExpenseChart from "./components/ExpenseChart";
+import "./index.css";
 
 function App() {
     const [refreshTrigger, setRefreshTrigger] = useState(false);
 
     const handleExpenseAdded = () => {
-        setRefreshTrigger(!refreshTrigger);
+        setRefreshTrigger((prev) => !prev);
     };
 
     return (
-        <div className="p-6 max-w-4xl mx-auto">
-            <h1 className="text-3xl font-bold mb-4 text-center text-blue-700">
-                💸 Expense Tracker
-            </h1>
-
-            <ExpenseForm onExpenseAdded={handleExpenseAdded} />
-            <ExpenseList refreshTrigger={refreshTrigger} />
-            <ExpenseChart refreshTrigger={refreshTrigger} />
+        <div className="container">
+            <h1>💰 Expense Tracker</h1>
+            <div className="dashboard-grid">
+                <div className="card">
+                    <ExpenseForm onExpenseAdded={handleExpenseAdded} />
+                </div>
+                <div className="card">
+                    <ExpenseChart refreshTrigger={refreshTrigger} />
+                </div>
+                <div className="card" style={{ gridColumn: "1 / -1" }}>
+                    <ExpenseList refreshTrigger={refreshTrigger} />
+                </div>
+            </div>
         </div>
     );
 }

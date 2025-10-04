@@ -1,87 +1,55 @@
-// src/components/ExpenseForm.js
 import React, { useState } from "react";
 import { createExpense } from "../services/api";
 
 const ExpenseForm = ({ onExpenseAdded }) => {
-    const [title, setTitle] = useState("");
-    const [amount, setAmount] = useState("");
-    const [category, setCategory] = useState("");
-    const [date, setDate] = useState("");
+    const [formData, setFormData] = useState({
+        title: "",
+        amount: "",
+        category: "",
+        date: "",
+    });
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
-
-        // Validation
-        if (!title || !amount || !category || !date) {
-            setError("All fields required.");
-            return;
-        }
-        if (Number(amount) <= 0) {
-            setError("Amount must be greater than 0.");
-            return;
-        }
-
+        setLoading(true);
         try {
-            const expense = { title, amount: Number(amount), category, date };
-            await createExpense(expense);
-            // Formu temizle
-            setTitle("");
-            setAmount("");
-            setCategory("");
-            setDate("");
-            if (onExpenseAdded) onExpenseAdded(); // parent component'i bilgilendir
+            await createExpense(formData);
+            setFormData({ title: "", amount: "", category: "", date: "" });
+            onExpenseAdded();
         } catch (err) {
-            setError("Error creating expense.");
             console.error(err);
+            setError("Failed to add expense. Please try again.");
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
-        <form onSubmit={handleSubmit} className="p-4 border rounded shadow-md">
-            {error && <p className="text-red-500 mb-2">{error}</p>}
-            <div className="mb-2">
-                <label className="block mb-1">Title</label>
-                <input
-                    type="text"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    className="border px-2 py-1 w-full"
-                />
-            </div>
-            <div className="mb-2">
-                <label className="block mb-1">Amount</label>
-                <input
-                    type="number"
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                    className="border px-2 py-1 w-full"
-                />
-            </div>
-            <div className="mb-2">
-                <label className="block mb-1">Category</label>
-                <input
-                    type="text"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                    className="border px-2 py-1 w-full"
-                />
-            </div>
-            <div className="mb-2">
-                <label className="block mb-1">Date</label>
-                <input
-                    type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    className="border px-2 py-1 w-full"
-                />
-            </div>
-            <button
-                type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            >
-                Add Expense
+        <form onSubmit={handleSubmit}>
+            <label>Title</label>
+            <input type="text" name="title" value={formData.title} onChange={handleChange} required />
+
+            <label>Amount</label>
+            <input type="number" name="amount" value={formData.amount} onChange={handleChange} required />
+
+            <label>Category</label>
+            <input type="text" name="category" value={formData.category} onChange={handleChange} required />
+
+            <label>Date</label>
+            <input type="date" name="date" value={formData.date} onChange={handleChange} required />
+
+            {error && <p className="error">{error}</p>}
+
+            <button type="submit" disabled={loading}>
+                {loading ? "Adding..." : "Add Expense"}
             </button>
         </form>
     );

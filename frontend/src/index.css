@@ -1,0 +1,134 @@
+/* Genel */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #1f2937;
+}
+
+h1, h2, h3 {
+    color: #1e3a8a;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* Grid Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+}
+
+/* Kart stili */
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+/* Form */
+form label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+    color: #374151;
+}
+
+form input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    margin-bottom: 12px;
+    transition: border-color 0.2s;
+}
+
+form input:focus {
+    border-color: #2563eb;
+    outline: none;
+}
+
+form button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+form button:hover {
+    background-color: #1d4ed8;
+}
+
+/* Tablo */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th {
+    background-color: #e5e7eb;
+    color: #111827;
+    text-align: left;
+    padding: 12px;
+    font-weight: 600;
+}
+
+td {
+    padding: 10px;
+    border-top: 1px solid #e5e7eb;
+}
+
+tr:hover {
+    background-color: #f9fafb;
+}
+
+button.delete {
+    background-color: #dc2626;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button.delete:hover {
+    background-color: #b91c1c;
+}
+
+/* Hata ve bilgi mesajları */
+.error {
+    color: #dc2626;
+    font-weight: 500;
+}
+
+.info {
+    color: #6b7280;
+    font-style: italic;
+}
+
+/* Chart başlığı */
+.chart-header {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    color: #1e40af;
+}
