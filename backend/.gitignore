@@ -4,6 +4,14 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+.env
+.env.local
+.env.production
+
+application.properties
+application-*.properties
+!application.properties.example
+
 ### STS ###
 .apt_generated
 .classpath
