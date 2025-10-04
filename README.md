@@ -100,4 +100,4 @@ expense-tracker/
 
 **Oğuzcan Karaman**  
 📍 Ankara, Türkiye  
-[LinkedIn](https://www.linkedin.com/in/oguzcankaraman/) • [GitHub]([#](https://github.com/oguzcankaraman))
+[LinkedIn](https://www.linkedin.com/in/oguzcankaraman/) • [GitHub]((https://github.com/oguzcankaraman))
