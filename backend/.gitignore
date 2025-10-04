@@ -8,8 +8,6 @@ target/
 .env.local
 .env.production
 
-application.properties
-application-*.properties
 !application.properties.example
 
 ### STS ###
