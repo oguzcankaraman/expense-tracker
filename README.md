@@ -6,6 +6,10 @@
 A full-stack web application for managing personal income and expenses — built with **Spring Boot**, **PostgreSQL**, and **ReactJS**.  
 It allows users to record their expenses, categorize them, and visualize spending distribution with interactive charts.
 
+
+## 🚀 Live Demo
+[Check it out here](https://expense-tracker-iota-hazel.vercel.app/)
+
 ---
 
 ## 🚀 Features
